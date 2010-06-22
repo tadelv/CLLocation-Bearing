@@ -28,7 +28,9 @@ CGFloat RadiansToDegrees(CGFloat radians)
 	double y = sin(deltalng) * cos(lat2);
 	double x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(deltalng);
 	double bearing = atan2(y, x);
-	float bearingDegrees = abs(RadiansToDegrees(bearing));
+	float bearingDegrees = RadiansToDegrees(bearing);
+	bearingDegrees = (int)bearingDegrees % 360;
+	bearingDegrees = abs(bearingDegrees);
 	if (bearingDegrees >= 315 && bearingDegrees < 45) {
 		return CLLocationBearingNorth;
 	}
