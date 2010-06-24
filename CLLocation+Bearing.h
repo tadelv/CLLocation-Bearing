@@ -10,9 +10,13 @@
 
 typedef enum {
 	CLLocationBearingNorth,
+	CLLocationBearingNorthEast,
 	CLLocationBearingEast,
+	CLLocationBearingSouthEast,
 	CLLocationBearingSouth,
+	CLLocationBearingSouthWest,
 	CLLocationBearingWest,
+	CLLocationBearingNorthWest,
 	CLLocationBearingUnknown = -1,
 } CLLocationBearing;
 

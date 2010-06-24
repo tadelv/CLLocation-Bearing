@@ -31,20 +31,7 @@ CGFloat RadiansToDegrees(CGFloat radians)
 	float bearingDegrees = RadiansToDegrees(bearing);
 	bearingDegrees = (int)bearingDegrees % 360;
 	bearingDegrees = abs(bearingDegrees);
-	if (bearingDegrees >= 315 && bearingDegrees < 45) {
-		return CLLocationBearingNorth;
-	}
-	else if (bearingDegrees >= 45 && bearingDegrees < 135) {
-		return CLLocationBearingEast;
-	}
-	else if (bearingDegrees >= 135 && bearingDegrees < 225) {
-		return CLLocationBearingSouth;
-	}
-	else if (bearingDegrees >= 225 && bearingDegrees < 315) {
-		return CLLocationBearingWest;
-	}
-	
-	return CLLocationBearingUnknown;
+	return round(bearingDegrees/45.0);
 }
 
 
