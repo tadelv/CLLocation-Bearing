@@ -27,10 +27,9 @@ CGFloat RadiansToDegrees(CGFloat radians)
 	float deltalng = lng2 - lng1;
 	double y = sin(deltalng) * cos(lat2);
 	double x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(deltalng);
-	double bearing = atan2(y, x);
+	double bearing = atan2(y, x) + 2 * M_PI;
 	float bearingDegrees = RadiansToDegrees(bearing);
 	bearingDegrees = (int)bearingDegrees % 360;
-	bearingDegrees = abs(bearingDegrees);
 	return round(bearingDegrees/45.0);
 }
 

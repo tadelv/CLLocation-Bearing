@@ -25,11 +25,15 @@
 }
 
 - (void)testNorth {
-	CLLocation *north = [[CLLocation alloc] initWithLatitude:80.0 longitude:0.0];
-	bearing = [home bearingToLocation:north];
+	CLLocation *test = [[CLLocation alloc] initWithLatitude:80.0 longitude:0.0];
+	bearing = [home bearingToLocation:test];
 	
-	NSAssert(bearing == CLLocationBearingNorth, @"Bearing should be north");
-	[north release];
+	NSAssert(bearing == CLLocationBearingNorth, @"Bearing should be north, but is %d", bearing);
+	
+	//and the other way around
+	bearing = [test bearingToLocation:home];
+	NSAssert(bearing == CLLocationBearingSouth, @"Bearing should be south, but is %d", bearing);
+	[test release];
 	
 }
 
@@ -37,7 +41,7 @@
 	CLLocation *south = [[CLLocation alloc] initWithLatitude:-80.0 longitude:0.0];
 	bearing = [home bearingToLocation:south];
 	
-	NSAssert(bearing == CLLocationBearingSouth, @"Bearing should be south");
+	NSAssert(bearing == CLLocationBearingSouth, @"Bearing should be south, but is %d", bearing);
 	[south release];
 }
 
@@ -45,7 +49,7 @@
 	CLLocation *east = [[CLLocation alloc] initWithLatitude:0.0 longitude:90.0];
 	bearing = [home bearingToLocation:east];
 	
-	NSAssert(bearing == CLLocationBearingEast, @"Bearing should be east");
+	NSAssert(bearing == CLLocationBearingEast, @"Bearing should be east, but is %d", bearing);
 	[east release];
 }
 
@@ -53,8 +57,41 @@
 	CLLocation *west = [[CLLocation alloc] initWithLatitude:0.0 longitude:-90.0];
 	bearing = [home bearingToLocation:west];
 	
-	NSAssert(bearing == CLLocationBearingWest, @"Bearing should be west");
+	NSAssert(bearing == CLLocationBearingWest, @"Bearing should be west, but is %d", bearing);
 	[west release];
 }
+
+- (void)testNorthEast {
+	CLLocation *northeast = [[CLLocation alloc] initWithLatitude:45.0 longitude:90.0];
+	bearing = [home bearingToLocation:northeast];
+	
+	NSAssert(bearing == CLLocationBearingNorthEast, @"Bearing should be northeast, but is %d", bearing);
+	[northeast release];
+}
+
+- (void)testSouthEast {
+	CLLocation *southeast = [[CLLocation alloc] initWithLatitude:-45.0 longitude:90.0];
+	bearing = [home bearingToLocation:southeast];
+	
+	NSAssert(bearing == CLLocationBearingSouthEast, @"Bearing should be southeast, but is %d", bearing);
+	[southeast release];
+}
+
+- (void)testSouthWest {
+	CLLocation *southwest = [[CLLocation alloc] initWithLatitude:-45.0 longitude:-90.0];
+	bearing = [home bearingToLocation:southwest];
+	
+	NSAssert(bearing == CLLocationBearingSouthWest, @"Bearing should be southwest, but is %d", bearing);
+	[southwest release];
+}
+
+- (void)testNorthWest {
+	CLLocation *northwest = [[CLLocation alloc] initWithLatitude:45.0 longitude:-90.0];
+	bearing = [home bearingToLocation:northwest];
+	
+	NSAssert(bearing == CLLocationBearingNorthWest, @"Bearing should be northwest, but is %d", bearing);
+	[northwest release];
+}
+
 
 @end

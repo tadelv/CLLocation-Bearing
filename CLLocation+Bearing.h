@@ -17,7 +17,7 @@ typedef enum {
 	CLLocationBearingSouthWest,
 	CLLocationBearingWest,
 	CLLocationBearingNorthWest,
-	CLLocationBearingUnknown = -1,
+	CLLocationBearingUnknown = -999,
 } CLLocationBearing;
 
 @interface CLLocation (Bearing) 
