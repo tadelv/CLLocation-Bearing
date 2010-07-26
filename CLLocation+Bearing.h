@@ -22,6 +22,13 @@ typedef enum {
 
 @interface CLLocation (Bearing) 
 
+/**
+ * returns one of the above values,
+ * which can be than used to your liking
+ *
+ * the value returned is the bearing you should take from the receiver
+ * to the argument, to reach it
+ */
 - (CLLocationBearing)bearingToLocation:(CLLocation *)location;
 
 @end
