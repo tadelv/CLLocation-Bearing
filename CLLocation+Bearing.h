@@ -20,11 +20,20 @@ typedef enum {
 	CLLocationBearingUnknown = -999,
 } CLLocationBearing;
 
+/**
+ * Returns a localized NSString object containing the bearing value
+ * i.e. if bearing is CLLocationBearingWest, this function
+ * should return 'West' (for English localization)
+ *
+ * Oh, and you should provide your own localization! ;)
+ */
+NSString *NSLocalizedStringFromBearing(CLLocationBearing bearing);
+
 @interface CLLocation (Bearing) 
 
 /**
  * returns one of the above values,
- * which can be than used to your liking
+ * which can be then used to your liking
  *
  * the value returned is the bearing you should take from the receiver
  * to the argument, to reach it

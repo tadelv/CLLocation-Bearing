@@ -7,6 +7,44 @@
 
 #import "CLLocation+Bearing.h"
 
+NSString *NSLocalizedStringFromBearing(CLLocationBearing bearing) {
+    NSString *key = nil;
+    switch (bearing) {
+        case CLLocationBearingEast:
+            key = @"East";
+            break;
+        case CLLocationBearingNorth:
+            key = @"North";
+            break;
+        case CLLocationBearingNorthEast:
+            key = @"NorthEast";
+            break;
+        case CLLocationBearingNorthWest:
+            key = @"NorthWest";
+            break;
+        case CLLocationBearingSouth:
+            key = @"South";
+            break;
+        case CLLocationBearingSouthEast:
+            key = @"SouthEast";
+            break;
+        case CLLocationBearingSouthWest:
+            key = @"SouthWest";
+            break;
+        case CLLocationBearingWest:
+            key = @"West";
+            break;
+        case CLLocationBearingUnknown:
+            key = @"Unknown Direction";
+            break;
+        default:
+			key = @"Unknown Direction";
+			break;
+    }
+    
+    return NSLocalizedString(key, nil);
+}
+
 
 @implementation CLLocation (Bearing)
 

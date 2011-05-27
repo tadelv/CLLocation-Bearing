@@ -30,10 +30,15 @@
 	
 	NSAssert(bearing == CLLocationBearingNorth, @"Bearing should be north, but is %d", bearing);
 	
+	NSString *bearingString = NSLocalizedStringFromBearing(bearing);
+	STAssertTrue([@"North" isEqualToString: bearingString], @"Bearing string should be North, but is %@", bearingString);
+	
+	
 	//and the other way around
 	bearing = [test bearingToLocation:home];
 	NSAssert(bearing == CLLocationBearingSouth, @"Bearing should be south, but is %d", bearing);
 	[test release];
+	
 	
 }
 
@@ -43,6 +48,9 @@
 	
 	NSAssert(bearing == CLLocationBearingSouth, @"Bearing should be south, but is %d", bearing);
 	[south release];
+	
+	NSString *bearingString = NSLocalizedStringFromBearing(bearing);
+	STAssertTrue([@"South" isEqualToString: bearingString], @"Bearing string should be South, but is %@", bearingString);
 }
 
 - (void)testEast {
@@ -51,6 +59,9 @@
 	
 	NSAssert(bearing == CLLocationBearingEast, @"Bearing should be east, but is %d", bearing);
 	[east release];
+	
+	NSString *bearingString = NSLocalizedStringFromBearing(bearing);
+	STAssertTrue([@"East" isEqualToString: bearingString], @"Bearing string should be East, but is %@", bearingString);
 }
 
 - (void)testWest {
@@ -59,6 +70,9 @@
 	
 	NSAssert(bearing == CLLocationBearingWest, @"Bearing should be west, but is %d", bearing);
 	[west release];
+	
+	NSString *bearingString = NSLocalizedStringFromBearing(bearing);
+	STAssertTrue([@"West" isEqualToString: bearingString], @"Bearing string should be West, but is %@", bearingString);
 }
 
 - (void)testNorthEast {
@@ -67,6 +81,9 @@
 	
 	NSAssert(bearing == CLLocationBearingNorthEast, @"Bearing should be northeast, but is %d", bearing);
 	[northeast release];
+	
+	NSString *bearingString = NSLocalizedStringFromBearing(bearing);
+	STAssertTrue([@"NorthEast" isEqualToString: bearingString], @"Bearing string should be NorthEast, but is %@", bearingString);
 }
 
 - (void)testSouthEast {
@@ -75,6 +92,9 @@
 	
 	NSAssert(bearing == CLLocationBearingSouthEast, @"Bearing should be southeast, but is %d", bearing);
 	[southeast release];
+	
+	NSString *bearingString = NSLocalizedStringFromBearing(bearing);
+	STAssertTrue([@"SouthEast" isEqualToString: bearingString], @"Bearing string should be SouthEast, but is %@", bearingString);
 }
 
 - (void)testSouthWest {
@@ -83,6 +103,9 @@
 	
 	NSAssert(bearing == CLLocationBearingSouthWest, @"Bearing should be southwest, but is %d", bearing);
 	[southwest release];
+	
+	NSString *bearingString = NSLocalizedStringFromBearing(bearing);
+	STAssertTrue([@"SouthWest" isEqualToString: bearingString], @"Bearing string should be SouthWest, but is %@", bearingString);
 }
 
 - (void)testNorthWest {
@@ -91,7 +114,16 @@
 	
 	NSAssert(bearing == CLLocationBearingNorthWest, @"Bearing should be northwest, but is %d", bearing);
 	[northwest release];
+	
+	NSString *bearingString = NSLocalizedStringFromBearing(bearing);
+	STAssertTrue([@"NorthWest" isEqualToString: bearingString], @"Bearing string should be NorthWest, but is %@", bearingString);
 }
 
+- (void)testBearingToString {
+	CLLocation *northwest = [[CLLocation alloc] initWithLatitude:45.0 longitude:-90.0];
+	bearing = [home bearingToLocation:northwest];
+	NSString *bearingString = NSLocalizedStringFromBearing(bearing);
+	STAssertTrue([@"NorthWest" isEqualToString: bearingString], @"Bearing string should be NorthWest, but is %@", bearingString);
+}
 
 @end
