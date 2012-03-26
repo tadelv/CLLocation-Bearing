@@ -7,6 +7,9 @@
 
 #import "CLLocation+Bearing.h"
 
+CGFloat DegreesToRadians(CGFloat degrees);
+CGFloat RadiansToDegrees(CGFloat radians);
+
 NSString *NSLocalizedStringFromBearing(CLLocationBearing bearing) {
     NSString *key = nil;
     switch (bearing) {
